@@ -1,0 +1,114 @@
+<!DOCTYPE >
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Đăng nhập</title>
+    <link th:href="@{/web/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <script th:src="@{https://kit.fontawesome.com/cc8d84a666.js}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script th:src="@{https://code.jquery.com/jquery-3.1.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/thinkview_base.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/thinkview_detail.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/product_detail.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/sign.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/cart.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/thinkview_rps_library.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/thinkview_rps.css}" type="text/css">
+</head>
+
+<body>
+    <div id='sign'>
+        <div class='form-container'>
+            <div class="form-header">
+                <button class='login active'>Login</button>
+                <button class='register'>Register</button>
+            </div>
+            <div class='login-form active'>
+                <p th:if="${param.error}" class="error">Invalid email or password</p>
+                <p th:if="${param.logout}" class="success">You have been logged out</p>
+                <form id="formLogin" name='f' th:action="@{/login}" method='POST'>
+                    <label th:for='username'>Username</label>
+                    <input required type="text" name='email' id='email' placeholder="Enter your username">
+                    <label for='password'>Password</label>
+                    <input required type="password" name='password' id='password' placeholder="******">
+                    <button type='submit' id='btnLogin'>Login</button>
+                </form>
+            </div>
+            <div class='register-form'>
+                <form id="formRegister" th:action="@{/register}" method='POST'>
+                    <label th:for='fullName'>Fullname</label>
+                    <input required type="text" th:name='username' th:id='username' placeholder="Enter your fullname">
+
+                    <label th:for='userName'>Email</label>
+                    <input required type="text" th:name='email' th:id='email' placeholder="Enter your email">
+
+                    <label th:for='password'>Password</label>
+                    <input required type="password" th:name='password' th:id='password' placeholder="******">
+
+                    <label th:for='confirmpassword'>Confirm password</label>
+                    <input required type="confirmpassword" th:name='confirmpassword' th:id='confirmpassword' placeholder="******">
+                    <button type='submit' id="btnRegister">Register</button>
+                </form>
+            </div>
+            <hr />
+            <div class='third-auth'>
+                <button style='color: blue'>Facebook</button>
+                <button style='color: orange'>Google</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#btnRegister').click(function(e) {
+            e.preventDefault();
+            var data = {};
+            var formData = $('#formRegister').serializeArray();
+            $.each(formData, function(i, v) {
+                data["" + v.name + ""] = v.value;
+            });
+            addProduct(data);
+
+        });
+
+        function addProduct(data) {
+            $.ajax({
+                url: '/register',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function(result) {
+                    window.location.href = "/";
+                    console.log(result);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+        const changeLoginBtn = document.querySelector('#sign .form-container .form-header button.login')
+        const changeRegisterBtn = document.querySelector('#sign .form-container .form-header button.register')
+        const loginForm = document.querySelector('#sign .form-container .login-form')
+        const registerForm = document.querySelector('#sign .form-container .register-form')
+        changeLoginBtn.addEventListener('click', () => {
+            changeLoginBtn.classList.add('active')
+            loginForm.classList.add('active')
+            registerForm.classList.remove('active')
+            changeRegisterBtn.classList.remove('active')
+        });
+        changeRegisterBtn.addEventListener('click', () => {
+            changeRegisterBtn.classList.add('active')
+            registerForm.classList.add('active')
+            loginForm.classList.remove('active')
+            changeLoginBtn.classList.remove('active')
+        });
+    </script>
+</body>
+
+</html>

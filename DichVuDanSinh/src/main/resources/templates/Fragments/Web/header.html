@@ -1,0 +1,118 @@
+<div th:fragment="header">
+    <!-- header -->
+    <div id='header'>
+        <div class='container'>
+            <div class='header-container'>
+                <div class='logo-wrapper'>
+                    <a href='/'>
+                        <img th:src='@{https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Emblem_of_Vietnam.svg/524px-Emblem_of_Vietnam.svg.png}'/>
+                    </a>
+                </div>
+                <div class='header-menu desktop'>
+                    <ul class='menu'>
+                        <li class='menu'>
+                            <a class='menu' href='/'>
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li class='menu'>
+                            <a class='menu' th:href='@{/organize}'>
+                                Dịch vụ
+                            </a>
+                            <ul class='child'>
+                                <li th:each="item :${organizes}">
+                                    <a th:href='@{/service/list?id=}+${item.id}' class='child'>
+                                        <span th:utext="${item.name}"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class='header-search'>
+                    <form th:action="@{/search}">
+                        <input required placeholder="Tìm kiếm dịch vụ" th:name="name"/>
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class='sign desktop'>
+                    <div class="sign-container">
+                        <span th:switch="${userName}">
+<!--                                anonymousUser-->
+                            <span th:case="'anonymousUser'">
+                                <!-- unlog -->
+                                <a title='Đăng nhập' class='login' href='/login'>
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Đăng nhập
+                                </a>
+                            </span>
+
+                            <span th:case="*">
+                                <!-- logged -->
+                                <img class='img'
+                                     th:src='@{https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png}'/>
+                                <span th:utext="${userName}"></span>
+                                <a class='logout' th:href='@{/logout}'>Đăng xuất</a>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class='bar-btn mb'>
+                    <button>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class='overlay mb'></div>
+                <div class='mb-menu mb'>
+                    <button><i class="far fa-window-close"></i></button>
+                    <div class='mb-menu-container'>
+                        <ul class='child'>
+                            <li th:each="item :${organizes}">
+                                <a th:href='@{/service/list?id=}+${item.id}' class='child'>
+                                    <span th:utext="${item.name}"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <span th:switch="${userName}">
+<!--                                anonymousUser-->
+                            <span th:case="'anonymousUser'">
+                                <!-- unlog -->
+                                <a title='Đăng nhập' class='login' href='/login'>
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Đăng nhập
+                                </a>
+                            </span>
+
+                            <span th:case="*">
+                                <!-- logged -->
+                                <span th:utext="${userName}"></span>
+                                <a class='logout' th:href='@{/logout}'>Đăng xuất</a>
+                            </span>
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+          const barsBtn = document.querySelector('#header .header-container .bar-btn button')
+          const menuMb = document.querySelector('#header .mb-menu')
+          const closeBtn = document.querySelector('#header .mb-menu button')
+          const overlay = document.querySelector('#header .overlay')
+
+          console.log(menuMb)
+          barsBtn.addEventListener('click', function () {
+            menuMb.classList.add('active')
+            overlay.classList.add('active')
+          })
+
+          closeBtn.addEventListener('click', function () {
+            menuMb.classList.remove('active')
+            overlay.classList.remove('active')
+          })
+
+        </script>
+    </div>
+    <!-- end header -->
+</div>

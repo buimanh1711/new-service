@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/Fragments/Web/head :: head"></th:block>
+    <title>Chi tiết </title>
+</head>
+<body>
+<div id="home">
+    <div class='app-container'>
+        <th:block th:include="/Fragments/Web/header :: header"></th:block>
+
+        <div class='content' id='detail'>
+            <div class='container'>
+                <div class='home-page-container'>
+                    <nav style="margin-top: 32px" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a style="color: blue !important" th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" th:text="${serviceDetail.Name}"></li>
+                        </ol>
+                    </nav>
+
+                    <div class='detail-container'>
+                        <div class='detail-info'>
+                            <h4 class='title' th:text="${serviceDetail.Name}"></h4>
+                            <div class='info'>
+                                <p>
+                                    <span>Đơn vị quản lý: <strong th:text="${organize.name}"></strong></span>
+                                </p>
+                                <p><span>Trụ sở: <strong th:text="${address.city}"></strong></span></p>
+                                <p><span>Ngày thành lập: <strong th:text="${serviceDetail.createdDate}"></strong></span></p>
+                                <div class='image-container'>
+                                    <img class='img' th:src=${serviceDetail.thumbnail}/>
+                                </div>
+                                <div className='description' th:utext=${serviceDetail.description}></div>
+                            </div>
+                        </div>
+
+                        <div class='detail-rate'>
+                            <p class='title'>
+                                <strong>
+                                    Đánh giá:
+                                </strong>
+                                <span id="star-container" th:each="rate: ${rating}">
+
+                        </span>
+                                <input th:value="${rating}" id="star" style="display: none">
+                                <script>
+                            const star = document.querySelector('#star')
+                            const starNum = parseInt(star.value)
+                            const starContainer = document.querySelector('#star-container')
+
+                            let starsHtml = []
+                            for (let i = 0; i < starNum; i++) {
+                                starsHtml.push(`<i style='color: rgb(204, 178, 32)' class="fas fa-star"></i>`)
+                            }
+                            starContainer.innerHTML = starsHtml.join(' ')
+
+
+                                </script>
+                            </p>
+                            <div class='comments'>
+                                <ul class="scroll">
+                                    <li th:each="item :${comments}">
+                                        <div class='comment-container'>
+                                            <p class="name" th:text="${item.createdBy}"></p>
+                                            <p class='content' th:text="${item.contentComment}"></p>
+
+                                            <span class='rep active'>Trả lời <i class="fas fa-reply"></i></span>
+                                            <div class='rep-comment'>
+                                                <span class='cls'>Đóng <i class="fas fa-times"></i></span>
+
+                                                <form class='rep-comment-form' id="formRep" th:action="@{/comment}"
+                                                      method="post">
+                                                    <ul>
+                                                        <li th:each="item1 :${item.repComment}">
+                                                            <span><strong>Admin</strong></span>
+                                                            <p th:text="${item1}"></p>
+                                                        </li>
+                                                    </ul>
+                                                    <input type="hidden" th:name="commentId"
+                                                           th:value="${item.commentId}"/>
+                                                    <input type="hidden" th:name="serviceId"
+                                                           th:value="${serviceDetail.id}"/>
+                                                    <textarea class="span6" rows="3" placeholder="Trả lời"
+                                                              th:name='contentRepComment' required></textarea>
+                                                    <button type="submit" id="btnSubmitRepComment">Gửi</button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class='user-rate'>
+                                <form id='comment-form'>
+                                    <i style='color: rgb(204, 178, 32)' class="fas fa-star"></i>
+                                    <input type='number' th:name='rate' class='star' value='5' min='1' max='5'/>
+                                    <input type="hidden" th:name="serviceId" th:value="${serviceDetail.id}"/>
+                                    <input type="hidden" th:name="userName" th:value="${userName}"></input>
+                                    <textarea class="span6" rows="3" placeholder="Để lại đánh giá" th:name='content'
+                                              required></textarea>
+                                    <button type="submit" id="btnSubmit">Gửi</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <th:block th:include="/Fragments/Web/footer :: footer"></th:block>
+            </div>
+        </div>
+
+        <script th:inline="javascript">
+            $('#btnSubmit').click(function(e) {
+                e.preventDefault();
+                var data = {};
+                var formData = $('#comment-form').serializeArray();
+                $.each(formData, function(i, v) {
+                    data["" + v.name + ""] = v.value;
+                });
+                console.log(data);
+                addProduct(data);
+            });
+            function addProduct(data) {
+                $.ajax({
+                        url : '/service',
+                        type : 'POST',
+                        contentType : 'application/json',
+                        data : JSON.stringify(data),
+                        dataType : 'json',
+                        success : function(result) {
+                            console.log(result);
+                             window.location.href = result.message;
+                        },
+                        error : function(error) {
+                            console.log(error)
+                            alert('Chưa đăng nhập!')
+                        }
+                    });
+            }
+
+        </script>
+        <script>
+    const repList = document.querySelectorAll('#detail .detail-container .detail-rate ul li .rep')
+    const commentList = document.querySelectorAll('#detail .detail-container .detail-rate ul li .rep-comment')
+    const commentListClose = document.querySelectorAll('#detail .detail-container .detail-rate ul li .rep-comment .cls')
+
+    Array.from(repList).forEach((item, index) => {
+      item.addEventListener('click', () => {
+        Array.from(repList).forEach(item => {
+          item.classList.add('active')
+        })
+        item.classList.remove('active')
+        Array.from(commentList).forEach(item => {
+          item.classList.remove('active')
+        })
+        commentList[index].classList.add('active')
+      })
+    })
+
+    Array.from(commentListClose).forEach((item, index) => {
+      item.addEventListener('click', () => {
+        commentList[index].classList.remove('active')
+        repList[index].classList.add('active')
+      })
+    })
+
+        </script>
+    </div>
+</div>
+</body>
+</html>

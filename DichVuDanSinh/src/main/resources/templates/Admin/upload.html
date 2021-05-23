@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+  <title>Upload</title>
+</head>
+<body>
+<div id="admin">
+  <div class='app-container'>
+    <div class='side-bar'>
+      <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
+    </div>
+    <div class='main-content'>
+      <div class='header'>
+        <h1>Thêm ảnh dịch vụ</h1>
+      </div>
+      <div class='main-container'>
+        <div class='page-container'>
+          <div class='add-service'>
+            <form th:id="upload" th:name="singleUploadForm" th:action="@{/uploadFile/}+${serviceDetail.id}" method="post" enctype='multipart/form-data' >
+              <div class='image-container'>
+                <img src='https://dapp.dblog.org/img/default.jpg' th:id='img' />
+                <label htmlFor='product_image'>
+                  <i class="fas fa-camera"></i>
+                  <input onchange='handleChange()' hidden th:type='file' th:id='image' th:name="file" required />
+                </label>
+              </div>
+              <button class='form-btn'>Submit</button>
+            </form>
+            <script>
+                const fileInput = document.querySelector('#image')
+                const fileImg = document.querySelector('#img')
+
+                const handleChange = () => {
+                  const selectedFile = fileInput.files[0]
+                  const reader = new FileReader()
+                  reader.onloadend = (fileInput) => {
+                    const url = reader.result
+                    setValue(url)
+                  }
+
+                  if (selectedFile && selectedFile.type.match('image.*')) {
+                    reader.readAsDataURL(selectedFile)
+                  }
+                }
+
+                const setValue = (url) => {
+                  fileImg.src = url
+                }
+              </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

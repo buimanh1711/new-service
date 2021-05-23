@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+    <title>Thêm đơn vị</title>
+</head>
+<body>
+<div id="admin">
+    <div class='app-container'>
+        <div class='side-bar'>
+            <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
+        </div>
+        <div class='main-content'>
+            <div class='header'>
+                <h1>Thêm đơn vị</h1>
+            </div>
+            <div class='main-container'>
+                <div class='page-container'>
+                    <div class='add-service'>
+                        <form  th:id='create-service'>
+                            <label class='form-label' th:for='name'>Tên chuyên mục</label>
+                            <input class='form-input' th:id='name' placeholder="Tên chuyên mục" th:name='name' />
+                            <label class='form-label' th:for='leadContact'>Người quản lý</label>
+                            <input class='form-input' th:id='leadContact' placeholder="Tên người quản lý" th:name='leadContact'  />
+
+                            <label class='form-label' th:for='city'> Thành phố</label>
+                            <select class='form-select' th:id='city' th:name='city'>
+                                <option th:each="item: ${address}">
+                                    <span th:value="${item.city}" th:utext="${item.city}"></span>
+                                </option>
+                            </select>
+                            <br><br>
+                            <label class='form-label' th:for='district'> Quận</label>
+                            <select class='form-select' th:id='district' th:name='district'>
+                                <option th:each="item: ${address}">
+                                    <span th:value="${item.district}" th:utext="${item.district}"></span>
+                                </option>
+                            </select>
+                            <br><br>
+                            <label class='form-label' th:for='ward'> Phường</label>
+                            <select class='form-select' th:id='ward' th:name='ward'>
+                                <option th:each="item: ${address}">
+                                    <span th:value="${item.ward}" th:utext="${item.ward}"></span>
+                                </option>
+                            </select>
+                            <br><br>
+                            <label class='form-label' th:for='street'> Phố </label>
+                            <select class='form-select' th:id='street' th:name='street'>
+                                <option th:each="item: ${address}">
+                                    <span th:value="${item.street}" th:utext="${item.street}"></span>
+                                </option>
+                            </select>
+<!--                            <br><br>-->
+<!--                            <input type="text" th:name='description' th:id="description">-->
+
+                            <button class='form-btn' th:id="btnAddProduct">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+<!--    	var editor = '';-->
+<!--		$(document).ready(function() {-->
+<!--			editor = CKEDITOR.replace('description');-->
+<!--		});-->
+        $('#btnAddProduct').click(function(e) {
+            e.preventDefault();
+            var data = {};
+            var formData = $('#create-service').serializeArray();
+            $.each(formData, function(i, v) {
+                data["" + v.name + ""] = v.value;
+            });
+<!--            data["description"] = editor.getData();-->
+            console.log(data);
+            addProduct(data);
+        });
+
+        function addProduct(data) {
+            $.ajax({
+                url: '/admin/organizes',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function(result) {
+                    window.location.href = "/admin/organizes/list";
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+  <title>Chi tiết</title>
+</head>
+<body>
+<div id="admin">
+  <div class='app-container'>
+    <div class='side-bar'>
+      <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
+    </div>
+    <div class='main-content'>
+      <div class='header'>
+        <h1>Chi tiết đơn vị</h1>
+      </div>
+      <div class='main-container'>
+        <div class='page-container'>
+          <div class='add-service'>
+            <form  th:id='create-service'>
+              <label class='form-label' th:for='name'>Tên chuyên mục</label>
+              <input class='form-input' th:id='name' placeholder="Tên chuyên mục" th:name='name' th:value="${infor.name}"/>
+              <label class='form-label' th:for='leadContact'>Người quản lý</label>
+              <input class='form-input' th:id='leadContact' placeholder="Tên người quản lý" th:name='leadContact'  th:value="${infor.leadContact}"/>
+
+              <label class='form-label' th:for='city'> Thành phố</label>
+              <select class='form-select' th:id='city' th:name='city' th:value="${address.city}">
+                <option th:each="item: ${addresses}">
+                  <span th:value="${item.city}" th:utext="${item.city}"></span>
+                </option>
+              </select>
+              <br><br>
+              <label class='form-label' th:for='district'> Quận</label>
+              <select class='form-select' th:id='district' th:name='district' th:value="${address.district}">
+                <option th:each="item: ${addresses}">
+                  <span th:value="${item.district}" th:utext="${item.district}"></span>
+                </option>
+              </select>
+              <br><br>
+              <label class='form-label' th:for='ward'> Phường</label>
+              <select class='form-select' th:id='ward' th:name='ward' th:value="${address.ward}">
+                <option th:each="item: ${addresses}">
+                  <span th:value="${item.ward}" th:utext="${item.ward}"></span>
+                </option>
+              </select>
+              <br><br>
+              <label class='form-label' th:for='street'> Phố </label>
+              <select class='form-select' th:id='street' th:name='street' th:value="${address.street}">
+                <option th:each="item: ${addresses}">
+                  <span th:value="${item.street}" th:utext="${item.street}"></span>
+                </option>
+              </select>
+              <br><br>
+              <input type="hidden" th:value="${infor.id}" th:id="id" th:name="id" />
+              <button class='form-btn' th:id="btnAddProduct">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+        $('#btnAddProduct').click(function(e) {
+            e.preventDefault();
+            var data = {};
+            var formData = $('#create-service').serializeArray();
+            $.each(formData, function(i, v) {
+                data["" + v.name + ""] = v.value;
+            });
+            updateProduct(data);
+        });
+        function updateProduct(data) {
+            $.ajax({
+                url: '/admin/organizes',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function(result) {
+                    window.location.href = "/admin/organizes/list";
+                },
+                error: function(error) {
+                    // window.location.href = "/admin/organizes/list";
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

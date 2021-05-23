@@ -1,0 +1,29 @@
+:root {
+  --primary-color: #2d67b3;
+  --primary-color-2: #6b93da;
+  --primary-font: "Roboto", sans-serif;
+  --text-color: #666;
+  --text-bold-color: #424242;
+  --button-background-color: #e7edf1;
+  --border-color: rgba(0, 0, 0, 0.05);
+}
+
+* {
+  font-family: var(--primary-font);
+}
+
+body {
+  margin: 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}

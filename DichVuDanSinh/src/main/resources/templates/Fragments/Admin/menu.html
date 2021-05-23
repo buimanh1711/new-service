@@ -1,0 +1,35 @@
+<div class='side-bar' th:fragment="menu">
+    <div class='side-container'>
+        <div class='logo-wrapper'>
+            <a href="/admin">
+                <img src='https://www.mediaworksonline.com/wp-content/uploads/2017/06/ascending-graph-1173935_960_720.png ' />
+            </a>
+        </div>
+        <ul class='menu'>
+            <li>
+                <a th:href='@{/admin/service/list}'>
+                    <i class="fab fa-servicestack"></i>
+                    <span>Dịch vụ</span>
+                </a>
+            </li>
+            <li>
+                <a th:href='@{/admin/organizes/list}'>
+                    <i class="fas fa-filter"></i>
+                    <span>Chuyên mục</span>
+                </a>
+            </li>
+            <li>
+                <a th:href='@{/admin}'>
+                    <i class="fas fa-users"></i>
+                    <span>Người dùng</span>
+                </a>
+            </li>
+            <li>
+                <a href='/'>
+                    <i class="fas fa-home"></i>
+                    <span>Đi tới Trang chủ</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="/Fragments/Web/head :: head"></th:block>
+  <title>Sản phâm</title>
+</head>
+<body>
+<div id="service">
+  <div class='app-container'>
+    <th:block th:include="/Fragments/Web/header :: header"></th:block>
+    <div class='content'>
+      <div class='container'>
+
+        <nav style='margin: 32px 0px' aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a style='color: rgb(124, 124, 255) !important' th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" th:utext="${services.organize}"></li>
+          </ol>
+        </nav>
+
+        <div class='service-page-container'>
+          <div class='row'>
+
+            <div class='col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6' th:each="item :${services.serviceDTOS}">
+              <div class='service-container'>
+                <div class='thumb'>
+                  <a th:href='@{/service/}+${item.id}'>
+                    <div  th:attr ="style='background-image: url('+@{${item.thumbnail}}+')'" class='image-wrapper'>
+                      <span class='category' th:utext="${services.organize}"></span>
+                      <div class='info'>
+                        <span th:utext="${item.name}"></span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <th:block th:include="/Fragments/Web/footer :: footer"></th:block>
+  </div>
+</div>
+
+</body>
+</html>

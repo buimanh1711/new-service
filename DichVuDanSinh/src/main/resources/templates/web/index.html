@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/Fragments/Web/head :: head"></th:block>
+    <link rel="stylesheet" th:href="@{/home.css}">
+    <title>Trang chủ </title>
+</head>
+<body>
+<div id="home">
+    <div class='app-container'>
+        <th:block th:include="/Fragments/Web/header :: header"></th:block>
+        <div class='content'>
+            <div class='container'>
+                <div class='home-page-container'>
+                    <div class='categories' th:each="item :${services}">
+                        <div class='cate-head'>
+                            <div class='cate-name' th:utext="${item.organize}">
+                                <span class="abc"></span>
+                            </div>
+                            <a class='see-more' th:href='@{/service/list?id=} +${item.organizeId}'>Xem thêm...</a>
+                        </div>
+                        <div class='row categories-container'>
+                            <div class='col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3'
+                                 th:each="item1 :${item.serviceDTOS}">
+                                <a th:href='@{/service/}+${item1.id}'>
+                                    <div class='service-background'
+                                         th:attr ="style='background-image: url('+@{${item1.thumbnail}}+')'" >
+                                        <span th:utext="${item1.name}"></span>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <th:block th:include="/Fragments/Web/footer :: footer"></th:block>
+    </div>
+</div>
+
+</body>
+</html>

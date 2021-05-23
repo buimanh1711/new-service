@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+    <title>Dịch vụ</title>
+</head>
+<body>
+<div id="admin">
+    <div class='app-container'>
+        <div class='side-bar'>
+            <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
+        </div>
+        <div class='main-content'>
+            <div class='header'>
+                <h1>Quản lý dịch vụ</h1>
+            </div>
+            <div class='main-container'>
+                <div class='page-container'>
+                    <div class='service'>
+                        <button class='add'>
+                            <a th:href="@{/admin/service/formadd}">Thêm dịch vụ</a>
+                        </button>
+                        <ul>
+                            <li class='title'>
+                                <span class='name'>Tên</span>
+                                <span class='category'>Chuyên mục</span>
+                                <span class='date'>Ngày tạo</span>
+                                <span class='action'>Thao tác</span>
+                            </li>
+
+                            <li th:each="item: ${services}">
+                                <span class='name' th:utext="${item.name}"></span>
+                                <span class='category' th:utext="${item.organizeName}"></span>
+                                <span class='date' th:utext="${item.createdDate}"></span>
+                                <span class='action'>
+                                <a class="edit" data-toggle="tooltip" title="Cập nhật dịch vụ" th:href='@{/admin/service/detail?id=}+${item.id}'><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="delete" data-toggle="tooltip" title='Xóa dịch vụ' th:href='@{/admin/service/delete?id=}+${item.id}'> <span>
+                                        <i class="fa fa-trash-o bigger-110 pink"></i>
+                                    </span>
+                                </a>
+                              </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

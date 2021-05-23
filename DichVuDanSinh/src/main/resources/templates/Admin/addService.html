@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+    <title>Dịch vụ</title>
+</head>
+<body>
+<div id="admin">
+    <div class='app-container'>
+        <div class='side-bar'>
+            <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
+        </div>
+        <div class='main-content'>
+            <div class='header'>
+                <h1>Thêm mới dịch vụ</h1>
+            </div>
+            <div class='main-container'>
+                <div class='page-container'>
+                    <div class='add-service'>
+                        <form method='POST' id='create-service'>
+                            <label class='form-label' th:for='name'>Tên dịch vụ</label>
+                            <input class='form-input' th:id='name' placeholder="Tên dịch vụ" th:name='name' />
+                            <label class='form-label' th:for='organizeName'>Chuyên mục</label>
+                            <select class='form-select' th:id='organizeName' th:name='organizeName'>
+                                <option th:each="item: ${organizes}">
+                                    <span th:value="${item.name}" th:utext="${item.name}"></span>
+                                </option>
+                            </select>
+                            <br><br>
+                            <input type="text" th:name='description' th:id="description">
+<!--                            <script>-->
+<!--                                    ClassicEditor-->
+<!--                                        .create(document.querySelector('#description'))-->
+<!--                                        .then(editor => {-->
+<!--                                            console.log(editor);-->
+<!--                                        })-->
+<!--                                        .catch(error => {-->
+<!--                                            console.error(error);-->
+<!--                                        });-->
+<!--                                </script>-->
+                            <button class='form-btn' th:id="btnAddProduct">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    	var editor = '';
+		$(document).ready(function() {
+			editor = CKEDITOR.replace('description');
+		});
+        $('#btnAddProduct').click(function(e) {
+            e.preventDefault();
+            var data = {};
+            var formData = $('#create-service').serializeArray();
+            $.each(formData, function(i, v) {
+                data["" + v.name + ""] = v.value;
+            });
+            data["description"] = editor.getData();
+            console.log(data);
+            addProduct(data);
+        });
+
+        function addProduct(data) {
+            $.ajax({
+                url: '/admin/service',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function(result) {
+                    window.location.href= result.message;
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

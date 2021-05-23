@@ -1,0 +1,742 @@
+#admin .app-container {
+  display: flex;
+}
+
+a {
+  text-decoration: none !important;
+}
+#admin .side-bar {
+  width: 25%;
+  background: rgb(92, 81, 250);
+  height: 100%; 
+  position: fixed;
+}
+
+#admin .side-bar .logo-wrapper {
+  width: 120px;
+  padding: 12px;
+}
+
+#admin .side-bar .logo-wrapper img {
+  width: 100%;
+  aspect-ratio: 2;
+}
+#admin .side-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 12px;
+}
+
+#admin .side-bar ul li a {
+  padding: 12px 12px;
+  display: block;
+  font-size: 1.1rem;
+  color: rgb(238, 238, 238);
+  border-bottom: 1px solid rgba(240, 240, 240, 0.37);
+}
+
+#admin .side-bar ul li a i {
+  margin-right: 12px;
+}
+
+#admin .main-content {
+  margin-left: 25%;
+  width: 75%;
+}
+
+#admin .main-content .main-container {
+  /* padding: 12px; */
+}
+
+#admin .main-content .header {
+  border-bottom: 1px solid rgb(240, 240, 240);
+  background: rgba(238, 238, 238, 0.459);
+  width: 100%;
+  padding: 12px;
+}
+
+#admin .main-content .header h1 {
+  font-size: 1.5rem;
+}
+
+#admin .main-content .page-container .service {
+  /* padding: 12px; */
+}
+
+#admin .main-content .page-container .service ul { 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#admin .main-content .page-container button.add {
+  margin: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgb(230, 230, 230);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: blue;
+  cursor: pointer
+}
+
+#admin .main-content .page-container button.add:hover {
+  color: white;
+  background: rgb(109, 119, 253);
+}
+
+#admin .main-content .page-container .service ul li {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgb(238, 236, 236);
+}
+
+
+#admin .main-content .page-container .service ul li span {
+  padding: 8px;
+  text-align: center;
+}
+
+#admin .main-content .page-container .service ul li.title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+#admin .main-content .page-container .service ul li.title span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#admin .main-content .page-container .service ul li span.name {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.category {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+  border-left: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.date {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.action {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.action button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#admin .main-content .page-container ul li span.action button.edit {
+  height: 32px;
+  width: 32px;
+  background: rgb(248, 174, 64);
+  color: white;
+  border-radius: 2px;
+}
+
+#admin .main-content .page-container ul li span.action button.delete {
+  height: 32px;
+  width: 32px;
+  background: rgb(245, 59, 59);
+  color: white;
+  border-radius: 2px;
+}#admin .app-container {
+  display: flex;
+}
+
+a {
+  text-decoration: none !important;
+}
+#admin .side-bar {
+  width: 25%;
+  background: rgb(92, 81, 250);
+  height: 100%;
+  position: fixed;
+}
+
+#admin .side-bar .logo-wrapper {
+  width: 120px;
+  padding: 12px;
+}
+
+#admin .side-bar .logo-wrapper img {
+  width: 100%;
+  aspect-ratio: 2;
+}
+#admin .side-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 12px;
+}
+
+#admin .side-bar ul li a {
+  padding: 12px 12px;
+  display: block;
+  font-size: 1.1rem;
+  color: rgb(238, 238, 238);
+  border-bottom: 1px solid rgba(240, 240, 240, 0.37);
+}
+
+#admin .side-bar ul li a i {
+  margin-right: 12px;
+}
+
+#admin .main-content {
+  margin-left: 25%;
+  width: 75%;
+}
+
+#admin .main-content .main-container {
+  /* padding: 12px; */
+}
+
+#admin .main-content .header {
+  border-bottom: 1px solid rgb(240, 240, 240);
+  background: rgba(238, 238, 238, 0.459);
+  width: 100%;
+  padding: 12px;
+}
+
+#admin .main-content .header h1 {
+  font-size: 1.5rem;
+}
+
+#admin .main-content .page-container .service {
+  /* padding: 12px; */
+}
+
+#admin .main-content .page-container .service ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#admin .main-content .page-container button.add {
+  margin: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgb(230, 230, 230);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: blue;
+  cursor: pointer
+}
+
+#admin .main-content .page-container button.add:hover {
+  color: white;
+  background: rgb(109, 119, 253);
+}
+
+#admin .main-content .page-container .service ul li {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgb(238, 236, 236);
+}
+
+
+#admin .main-content .page-container .service ul li span {
+  padding: 8px;
+  text-align: center;
+}
+
+#admin .main-content .page-container .service ul li.title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+#admin .main-content .page-container .service ul li.title span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#admin .main-content .page-container .service ul li span.name {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.category {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+  border-left: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.date {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.action {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.action button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#admin .main-content .page-container ul li span.action button.edit {
+  height: 32px;
+  width: 32px;
+  background: rgb(248, 174, 64);
+  color: white;
+  border-radius: 2px;
+}
+
+#admin .main-content .page-container ul li span.action button.delete {
+  height: 32px;
+  width: 32px;
+  background: rgb(245, 59, 59);
+  color: white;
+  border-radius: 2px;
+}#admin .app-container {
+  display: flex;
+}
+
+a {
+  text-decoration: none !important;
+}
+#admin .side-bar {
+  width: 25%;
+  background: rgb(92, 81, 250);
+  height: 100%;
+  position: fixed;
+}
+
+#admin .side-bar .logo-wrapper {
+  width: 120px;
+  padding: 12px;
+}
+
+#admin .side-bar .logo-wrapper img {
+  width: 100%;
+  aspect-ratio: 2;
+}
+#admin .side-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 12px;
+}
+
+#admin .side-bar ul li a {
+  padding: 12px 12px;
+  display: block;
+  font-size: 1.1rem;
+  color: rgb(238, 238, 238);
+  border-bottom: 1px solid rgba(240, 240, 240, 0.37);
+}
+
+#admin .side-bar ul li a i {
+  margin-right: 12px;
+}
+
+#admin .main-content {
+  margin-left: 25%;
+  width: 75%;
+}
+
+#admin .main-content .main-container {
+  /* padding: 12px; */
+}
+
+#admin .main-content .header {
+  border-bottom: 1px solid rgb(240, 240, 240);
+  background: rgba(238, 238, 238, 0.459);
+  width: 100%;
+  padding: 12px;
+}
+
+#admin .main-content .header h1 {
+  font-size: 1.5rem;
+}
+
+#admin .main-content .page-container .service {
+  /* padding: 12px; */
+}
+
+#admin .main-content .page-container .service ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#admin .main-content .page-container button.add {
+  margin: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgb(230, 230, 230);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: blue;
+  cursor: pointer
+}
+
+#admin .main-content .page-container button.add:hover {
+  color: white;
+  background: rgb(109, 119, 253);
+}
+
+#admin .main-content .page-container .service ul li {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgb(238, 236, 236);
+}
+
+
+#admin .main-content .page-container .service ul li span {
+  padding: 8px;
+  text-align: center;
+}
+
+#admin .main-content .page-container .service ul li.title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+#admin .main-content .page-container .service ul li.title span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#admin .main-content .page-container .service ul li span.name {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.category {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+  border-left: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.date {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.action {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.action button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#admin .main-content .page-container ul li span.action button.edit {
+  height: 32px;
+  width: 32px;
+  background: rgb(248, 174, 64);
+  color: white;
+  border-radius: 2px;
+}
+
+#admin .main-content .page-container ul li span.action button.delete {
+  height: 32px;
+  width: 32px;
+  background: rgb(245, 59, 59);
+  color: white;
+  border-radius: 2px;
+}#admin .app-container {
+  display: flex;
+}
+
+a {
+  text-decoration: none !important;
+}
+#admin .side-bar {
+  width: 25%;
+  background: rgb(92, 81, 250);
+  height: 100%;
+  position: fixed;
+}
+
+#admin .side-bar .logo-wrapper {
+  width: 120px;
+  padding: 12px;
+}
+
+#admin .side-bar .logo-wrapper img {
+  width: 100%;
+  aspect-ratio: 2;
+}
+#admin .side-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 12px;
+}
+
+#admin .side-bar ul li a {
+  padding: 12px 12px;
+  display: block;
+  font-size: 1.1rem;
+  color: rgb(238, 238, 238);
+  border-bottom: 1px solid rgba(240, 240, 240, 0.37);
+}
+
+#admin .side-bar ul li a i {
+  margin-right: 12px;
+}
+
+#admin .main-content {
+  margin-left: 25%;
+  width: 75%;
+}
+
+#admin .main-content .main-container {
+  /* padding: 12px; */
+}
+
+#admin .main-content .header {
+  border-bottom: 1px solid rgb(240, 240, 240);
+  background: rgba(238, 238, 238, 0.459);
+  width: 100%;
+  padding: 12px;
+}
+
+#admin .main-content .header h1 {
+  font-size: 1.5rem;
+}
+
+#admin .main-content .page-container .service {
+  /* padding: 12px; */
+}
+
+#admin .main-content .page-container .service ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#admin .main-content .page-container button.add {
+  margin: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgb(230, 230, 230);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: blue;
+  cursor: pointer
+}
+
+#admin .main-content .page-container button.add:hover {
+  color: white;
+  background: rgb(109, 119, 253);
+}
+
+#admin .main-content .page-container .service ul li {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgb(238, 236, 236);
+}
+
+
+#admin .main-content .page-container .service ul li span {
+  padding: 8px;
+  text-align: center;
+}
+
+#admin .main-content .page-container .service ul li.title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+#admin .main-content .page-container .service ul li.title span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#admin .main-content .page-container .service ul li span.name {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.category {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+  border-left: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.date {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.action {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.action button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#admin .main-content .page-container ul li span.action button.edit {
+  height: 32px;
+  width: 32px;
+  background: rgb(248, 174, 64);
+  color: white;
+  border-radius: 2px;
+}
+
+#admin .main-content .page-container ul li span.action button.delete {
+  height: 32px;
+  width: 32px;
+  background: rgb(245, 59, 59);
+  color: white;
+  border-radius: 2px;
+}#admin .app-container {
+  display: flex;
+}
+
+a {
+  text-decoration: none !important;
+}
+#admin .side-bar {
+  width: 25%;
+  background: rgb(92, 81, 250);
+  height: 100%;
+  position: fixed;
+}
+
+#admin .side-bar .logo-wrapper {
+  width: 120px;
+  padding: 12px;
+}
+
+#admin .side-bar .logo-wrapper img {
+  width: 100%;
+  aspect-ratio: 2;
+}
+#admin .side-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 12px;
+}
+
+#admin .side-bar ul li a {
+  padding: 12px 12px;
+  display: block;
+  font-size: 1.1rem;
+  color: rgb(238, 238, 238);
+  border-bottom: 1px solid rgba(240, 240, 240, 0.37);
+}
+
+#admin .side-bar ul li a i {
+  margin-right: 12px;
+}
+
+#admin .main-content {
+  margin-left: 25%;
+  width: 75%;
+}
+
+#admin .main-content .main-container {
+  /* padding: 12px; */
+}
+
+#admin .main-content .header {
+  border-bottom: 1px solid rgb(240, 240, 240);
+  background: rgba(238, 238, 238, 0.459);
+  width: 100%;
+  padding: 12px;
+}
+
+#admin .main-content .header h1 {
+  font-size: 1.5rem;
+}
+
+#admin .main-content .page-container .service {
+  /* padding: 12px; */
+}
+
+#admin .main-content .page-container .service ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#admin .main-content .page-container button.add {
+  margin: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgb(230, 230, 230);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: blue;
+  cursor: pointer
+}
+
+#admin .main-content .page-container button.add:hover {
+  color: white;
+  background: rgb(109, 119, 253);
+}
+
+#admin .main-content .page-container .service ul li {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgb(238, 236, 236);
+}
+
+
+#admin .main-content .page-container .service ul li span {
+  padding: 8px;
+  text-align: center;
+}
+
+#admin .main-content .page-container .service ul li.title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+#admin .main-content .page-container .service ul li.title span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#admin .main-content .page-container .service ul li span.name {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.category {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+  border-left: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.date {
+  width: 25%;
+  border-right: 1px solid rgb(238, 236, 236);
+}
+
+#admin .main-content .page-container .service ul li span.action {
+  width: 25%;
+}
+
+#admin .main-content .page-container .service ul li span.action a {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#admin .main-content .page-container ul li span.action a.edit {
+  height: 32px;
+  width: 32px;
+  background: rgb(248, 174, 64);
+  color: white;
+  border-radius: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#admin .main-content .page-container ul li span.action a.delete {
+  height: 32px;
+  width: 32px;
+  background: rgb(245, 59, 59);
+  color: white;
+  border-radius: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

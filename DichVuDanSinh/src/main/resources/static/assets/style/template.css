@@ -1,0 +1,86 @@
+#header {
+  background: var(--primary-color);
+  color: white;
+  margin-bottom: 32px;
+}
+
+#header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0px;
+  position: relative;
+}
+
+#header .header-container .sign {
+  position: absolute;
+  right: 12px;
+  opacity: .8;
+}
+
+#header .header-container .sign a.logout {
+  position: absolute;
+  color: var(--text-color);
+  font-weight: normal;
+  background: white;
+  width: 80px;
+  text-align: center;
+  padding: 8px 12px;
+  right: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  display: none;
+}
+
+#header .header-container .sign:hover a.logout {
+  display: block;
+}
+
+#header .header-container .sign a.login {
+  color: white;
+  font-size: 1.2rem
+}
+
+#header .header-container .sign:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+#header .header-container .sign img {
+  width: 40px;
+  display: block;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  margin-bottom: 4px;
+}
+
+#header .header-container .avt-wrapper {
+  width: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+#header .header-container .avt-wrapper img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+#header .header-container .title-wrapper {
+  margin-left: 12px;
+  font-size: 1.6rem;
+}
+
+#footer {
+  background: rgb(243, 243, 243);
+}
+#footer .footer-container {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color)
+}

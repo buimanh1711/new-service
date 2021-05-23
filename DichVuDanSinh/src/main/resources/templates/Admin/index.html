@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+    <title>Trang chủ</title>
+</head>
+<body>
+<div id="admin">
+    <div class='app-container'>
+        <div class='side-bar'>
+            <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
+        </div>
+        <div class='main-content'>
+            <div class='header'>
+                <h1>Người dùng</h1>
+            </div>
+            <div class='main-container'>
+                <div class='page-container'>
+                    <div class='service'>
+                        <ul>
+                            <li class='title'>
+                                <span class='name'>Tên</span>
+                                <span class='category'>email</span>
+                                <span class='date'>Ngày tạo</span>
+                                <span class='action'>Thao tác</span>
+                            </li>
+                            <li th:each="item:${users}">
+                                <span class='name' th:utext="${item.userName}"></span>
+                                <span class='category' th:utext="${item.email}"></span>
+                                <span class='date' th:utext="${item.createdDate}"></span>
+                                <span class='action'>
+                                <a class="delete" data-toggle="tooltip" title='Xóa người dùng' th:href='@{/admin/user/del?userId=}+${item.id}'> <span>
+                                        <i class="fa fa-trash-o bigger-110 pink"></i>
+                                    </span>
+                                </a>
+                              </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

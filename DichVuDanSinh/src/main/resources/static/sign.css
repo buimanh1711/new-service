@@ -1,0 +1,104 @@
+#sign .form-container {
+  width: 400px;
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+#sign .form-container .form-header {
+  display: flex;
+}
+
+#sign .form-container .form-header button {
+  width: 50%;
+  padding: 12px 0px;
+  border: none;
+  background: none;
+  font-weight: normal;
+  font-size: 1.4rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  outline: none;
+}
+
+#sign .form-container .form-header button.active {
+  border-bottom: 2px solid blue;
+  font-weight: 500;
+}
+
+#sign .form-container form {
+  width: 100%;
+  padding: 32px;
+  padding-bottom: 0;
+}
+
+#sign .form-container .login-form, 
+#sign .form-container .register-form {
+  display: none;
+
+}
+
+#sign .form-container .login-form.active, 
+#sign .form-container .register-form.active {
+  display: block;
+}
+
+#sign .form-container form input, #sign .form-container form label {
+  display: block;
+}
+
+#sign .form-container form label {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+#sign .form-container form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgb(228, 225, 225);
+  font-size: 1.1rem;
+  outline: none;
+  border-radius: 4px;
+  background: rgb(236, 233, 233);
+}
+
+#sign .form-container form button {
+  width: 100%;
+  border-radius: 9999px;
+  padding: 12px;
+  border: none;
+  background: blue;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 500;
+  margin-top: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+#sign .form-container form button:hover {
+  background: var(--primary-color-2);
+  transition: ease .3s
+}
+
+#sign .third-auth {
+  display: flex;
+  padding: 0px 32px;
+  justify-content: space-between;
+  margin-bottom: 45px;
+}
+
+#sign .third-auth button {
+  width: 48%;
+  border-radius: 9999px;
+  padding: 8px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
