@@ -94,4 +94,8 @@ public class ServiceEntity extends BaseEntity {
     public void setCommentEntities(List<CommentEntity> commentEntities) {
         this.commentEntities = commentEntities;
     }
+    public String getThumbnail1() {
+        return this.Thumbnail;
+    }
 }
+

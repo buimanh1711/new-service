@@ -45,7 +45,7 @@ public class ServiceService implements IServiceService {
             ServiceEntity oldServiceEntity = serviceRepository.findById(model.getId()).get();
             serviceEntity.setId(oldServiceEntity.getId());
             serviceEntity = mapper.map(model, serviceEntity.getClass());
-            serviceEntity.setThumbnail(oldServiceEntity.getThumbnail());
+            serviceEntity.setThumbnail(oldServiceEntity.getThumbnail1());
             if (model.getDescription() == ""){
                 serviceEntity.setDescription(oldServiceEntity.getDescription());
             }

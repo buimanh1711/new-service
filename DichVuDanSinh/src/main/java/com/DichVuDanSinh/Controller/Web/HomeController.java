@@ -63,6 +63,8 @@ public class HomeController {
         List<ServiceDTO> serviceDTOS = serviceService.findByOrganizeId1(organizeDTO.getId());
         ServiceInHomePage serviceInHomePage = new ServiceInHomePage(organizeDTO.getName(),organizeDTO.getId(), serviceDTOS);
         mav.addObject("services", serviceInHomePage);
+        List<OrganizeDTO> organizeDTOList = organizeService.findAll();
+        mav.addObject("organizes", organizeDTOList);
         return mav;
     }
 
