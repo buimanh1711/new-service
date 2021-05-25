@@ -71,6 +71,7 @@
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function(result) {
+                    alert('Thêm thành công');
                     window.location.href= result.message;
                 },
                 error: function(error) {

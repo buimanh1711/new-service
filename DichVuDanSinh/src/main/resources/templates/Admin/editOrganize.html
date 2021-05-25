@@ -78,6 +78,7 @@
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function(result) {
+                    alert('Chỉnh sửa thành công');
                     window.location.href = "/admin/organizes/list";
                 },
                 error: function(error) {
