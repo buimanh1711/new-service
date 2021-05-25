@@ -1,48 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <th:block th:include="/Fragments/Admin/header :: header"></th:block>
-  <title>Đơn vị </title>
+    <th:block th:include="/Fragments/Admin/header :: header"></th:block>
+    <title>Đơn vị </title>
 </head>
 <body>
 <div id="admin">
-  <div class='app-container'>
-    <div class='side-bar'>
-      <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
-    </div>
-    <div class='main-content'>
-      <div class='header'>
-        <h1>Quản lý đơn vị </h1>
-      </div>
-      <div class='main-container'>
-        <div class='page-container'>
-          <div class='category'>
-            <button class='add'>
-              <a th:href="@{/admin/organize/add}">Thêm đơn vị</a>
-            </button>
-            <ul>
-              <li class='title'>
-                <span class='name'>Tên</span>
-                <span class='date'>Ngày tạo</span>
-                <span class='action'>Thao tác</span>
-              </li>
-              <li th:each="item: ${organizes}">
-                <span class='name' th:utext="${item.name}"></span>
-                <span class='date' th:utext="${item.createdDate}"></span>
-                <span class='action'>
-                  <a class="edit" data-toggle="tooltip" title="Cập nhật chuyên mục" th:href='@{/admin/organizes/information?id=}+${item.id}'><i class="fa fa-pencil-square-o"></i></a>
-                  <a class="delete" data-toggle="tooltip" title='Xóa chuyên mục' th:href='@{/admin/organizes/deinformation?id=}+${item.id}'> <span>
-                          <i class="fa fa-trash-o bigger-110 pink"></i>
-                      </span>
-                  </a>
-                </span>
-              </li>
-            </ul>
-          </div>
+    <div class='app-container'>
+        <div class='side-bar'>
+            <th:block th:include="/Fragments/Admin/menu :: menu"></th:block>
         </div>
-      </div>
+        <div class='main-content'>
+            <div class='header'>
+                <h1>Quản lý đơn vị </h1>
+            </div>
+            <div class='main-container'>
+                <div class='page-container'>
+                    <div class='category'>
+                        <button class='add'>
+                            <a th:href="@{/admin/organize/add}">Thêm đơn vị</a>
+                        </button>
+                        <ul>
+                            <li class='title'>
+                                <span class='name'>Tên</span>
+                                <span class='date'>Ngày tạo</span>
+                                <span class='action'>Thao tác</span>
+                            </li>
+                            <li th:each="item: ${organizes}">
+                                <span class='name' th:utext="${item.name}"></span>
+                                <span class='date' th:utext="${item.createdDate}"></span>
+                                <span class='action'>
+                                  <a class="edit" data-toggle="tooltip" title="Cập nhật chuyên mục"
+                                     th:href='@{/admin/organizes/information?id=}+${item.id}'><i class="fa fa-pencil-square-o"></i></a>
+                                  <a class="delete" title='Xóa chuyên mục'
+                                     data-toggle="modal"
+                                     th:attr="data-target='#deleteModal'+${item.id}"
+                                  >
+                                     <span>
+                                        <i class="fa fa-trash-o bigger-110 pink"></i>
+                                     </span>
+                                  </a>
+                                </span>
+                                <!--Model here-->
+                                <div class="modal fade" th:attr="id='deleteModal'+${item.id}" tabindex="-1"
+                                     role="dialog" aria-labelledby="recordDeleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="recordDeleteModalLabel">Delete Record</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this record?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    No
+                                                </button>
+                                                <a href="newRecordForm.html" class="btn btn-primary"
+                                                   th:attr="href='/admin/organizes/deinformation?id='+${item.id}">Yes</a>
+                                                </span>
+                                                </a>
+                                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 </body>
