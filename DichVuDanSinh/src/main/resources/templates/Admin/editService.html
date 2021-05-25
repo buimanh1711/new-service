@@ -53,7 +53,6 @@
                 data["" + v.name + ""] = v.value;
             });
             data["description"] = editor.getData();
-            var id = $('#id').val();
             updateProduct(data);
         });
         function updateProduct(data) {
@@ -64,7 +63,7 @@
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function(result) {
-                    window.location.href = "/admin/service/list";
+                     window.location.href = result.message;
                 },
                 error: function(error) {
                     // window.location.href = "/admin/organizes/list";
