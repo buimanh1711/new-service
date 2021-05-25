@@ -26,7 +26,7 @@
                             <div class='service-container'>
                                 <div class='thumb'>
                                     <a th:href='@{/service/}+${item.id}'>
-                                        <div  th:attr ="style='background-image: url('+'/assets/img/' +${item.thumbnail}+')' "
+                                        <div  th:attr ="style='background-image: url('+${item.thumbnail}+')' "
                                               class='image-wrapper'>
                                             <div class='info'>
                                                 <span th:utext="${item.name}"></span>

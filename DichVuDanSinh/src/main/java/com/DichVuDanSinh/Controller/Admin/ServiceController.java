@@ -66,7 +66,7 @@ public class ServiceController {
     @PutMapping(value = "/admin/service")
     public ResponseEntity<?> update(@RequestBody ServiceDTO model){
         serviceService.save(model);
-        return ResponseEntity.ok(new MessageResponseDTO("Thanh cong !!"));
+        return ResponseEntity.ok(new MessageResponseDTO("/uploadImage/" + model.getId()));
     }
 
     @GetMapping(value = "/admin/service/delete")
