@@ -42,6 +42,7 @@ public class HomeController {
         String index ="web/search";
         ModelAndView mav = new ModelAndView(index);
         mav.addObject("services", results);
+        mav.addObject("organizes", organizeService.findAll());
         return mav;
     }
 
